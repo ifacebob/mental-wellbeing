@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulBalance | AI-Powered Mental Wellness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a class="logo" onclick="showPage('home')">
+                    <i class="fas fa-brain"></i>
+                    MindfulBalance
+                </a>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="showPage('mood-journal')">Mood Journal</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="showPage('study-buddy')">Study Buddy</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="showPage('about')">About</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-heading">AI-Powered Mental Wellness</h1>
+                        <p class="hero-subheading">Combine the power of AI with proven mental health techniques to improve your wellbeing and academic performance.</p>
+                        <div>
+                            <a onclick="showPage('mood-journal')" class="btn">Track Your Mood</a>
+                            <a onclick="showPage('study-buddy')" class="btn btn-outline">Try Study Buddy</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc5d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mental Wellness" class="hero-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="features-content">
+                    <div class="feature-card">
+                        <i class="fas fa-feather"></i>
+                        <h3>AI Mood Journal</h3>
+                        <p>Track your emotions daily and get AI-powered insights into your mental health patterns with sentiment analysis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Study Buddy</h3>
+                        <p>Transform your study materials into interactive flashcards using AI question generation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Progress Tracking</h3>
+                        <p>Visualize your mental health journey and academic progress with intuitive charts and analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mood Journal Preview -->
+        <section class="mood-journal">
+            <div class="container">
+                <h2 class="section-title">Mood Journal</h2>
+                <div class="journal-container">
+                    <div class="journal-form">
+                        <h3>Track Your Emotions</h3>
+                        <p>Journal your thoughts and let AI analyze your emotional state to help you identify patterns and triggers.</p>
+                        <div class="form-group">
+                            <label for="journal-entry">How are you feeling today?</label>
+                            <textarea class="form-control" id="journal-entry" placeholder="Write about your day..."></textarea>
+                        </div>
+                        <button class="btn" onclick="showPage('mood-journal')">Try Mood Journal</button>
+                    </div>
+                    <div class="journal-chart">
+                        <h3>Mood Trends</h3>
+                        <p>Visualize your emotional journey over time with our interactive charts.</p>
+                        <canvas id="moodChartPreview" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Buddy Preview -->
+        <section class="study-buddy">
+            <div class="container">
+                <h2 class="section-title">AI Study Buddy</h2>
+                <div class="study-container">
+                    <div class="study-input">
+                        <h3>Create Flashcards from Notes</h3>
+                        <p>Paste your study notes and let AI generate interactive flashcards to enhance your learning.</p>
+                        <div class="form-group">
+                            <label for="study-notes">Your study notes:</label>
+                            <textarea class="form-control" id="study-notes" placeholder="Paste your notes here..."></textarea>
+                        </div>
+                        <button class="btn" onclick="showPage('study-buddy')">Generate Flashcards</button>
+                    </div>
+                    <div class="study-output">
+                        <h3>Interactive Learning</h3>
+                        <p>Study smarter with AI-generated flashcards that help you retain information better.</p>
+                        <div class="flashcards-container">
+                            <div class="flashcard" onclick="flashcard(this)">
+                                <div class="flashcard-inner">
+                                    <div class="flashcard-front">
+                                        <h4>What is mindfulness?</h4>
+                                    </div>
+                                    <div class="flashcard-back">
+                                        <p>The practice of being present and fully engaged with the current moment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard" onclick="flashcard(this)">
+                                <div class="flashcard-inner">
+                                    <div class="flashcard-front">
+                                        <h4>What does SDG 3 focus on?</h4>
+                                    </div>
+                                    <div class="flashcard-back">
+                                        <p>Good Health and Well-being for all ages.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mood Journal Page -->
+    <div id="mood-journal" class="page">
+        <div class="container">
+            <h2 class="section-title">AI Mood Journal</h2>
+            
+            <section class="mood-journal">
+                <div class="journal-container">
+                    <div class="journal-form">
+                        <h3>New Journal Entry</h3>
+                        <div class="form-group">
+                            <label for="journal-date">Date</label>
+                            <input type="date" class="form-control" id="journal-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="journal-text">How are you feeling today?</label>
+                            <textarea class="form-control" id="journal-text" placeholder="Write about your day, your feelings, or anything on your mind..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="mood-rating">Mood Rating (1-10)</label>
+                            <input type="range" class="form-control" id="mood-rating" min="1" max="10" value="5">
+                            <div id="mood-value">5</div>
+                        </div>
+                        <button class="btn" onclick="analyzeMood()">Analyze My Mood</button>
+                    </div>
+                    <div class="journal-chart">
+                        <h3>Mood Analysis</h3>
+                        <div id="sentiment-result">
+                            <p>Your mood analysis will appear here after you submit an entry.</p>
+                        </div>
+                        <canvas id="moodChart" height="200"></canvas>
+                        <h4>Recent Entries</h4>
+                        <div id="journal-entries">
+                            <p>No entries yet. Start journaling to see your history here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Study Buddy Page -->
+    <div id="study-buddy" class="page">
+        <div class="container">
+            <h2 class="section-title">AI Study Buddy</h2>
+            
+            <section class="study-buddy">
+                <div class="study-container">
+                    <div class="study-input">
+                        <h3>Create Flashcards from Your Notes</h3>
+                        <div class="form-group">
+                            <label for="study-topic">Topic</label>
+                            <input type="text" class="form-control" id="study-topic" placeholder="e.g., Psychology Chapter 3">
+                        </div>
+                        <div class="form-group">
+                            <label for="study-notes">Your Notes</label>
+                            <textarea class="form-control" id="study-text" placeholder="Paste your study notes here..." rows="10"></textarea>
+                        </div>
+                        <button class="btn" onclick="generateFlashcards()">Generate Flashcards</button>
+                    </div>
+                    <div class="study-output">
+                        <h3>Your Flashcards</h3>
+                        <div id="flashcards-container" class="flashcards-container">
+                            <p>Your generated flashcards will appear here.</p>
+                        </div>
+                        <div id="study-tips">
+                            <h4>Study Tips</h4>
+                            <ul>
+                                <li>Review flashcards regularly for better retention</li>
+                                <li>Use spaced repetition technique</li>
+                                <li>Study in short, focused sessions</li>
+                                <li>Test yourself frequently</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <h2 class="section-title">About MindfulBalance</h2>
+            
+            <section class="features">
+                <div class="features-content">
+                    <div class="feature-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Our Mission</h3>
+                        <p>To make mental wellness support accessible through AI-powered tools that are easy to use and effective.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-sd-card"></i>
+                        <h3>SDG Alignment</h3>
+                        <p>Our solution directly supports UN Sustainable Development Goal 3: Good Health and Well-being.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Technology</h3>
+                        <p>Built with HTML5, CSS, JavaScript, Python Flask, and Hugging Face AI APIs for sentiment analysis.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mood-journal">
+                <h2 class="section-title">How It Helps Students</h2>
+                <div class="journal-container">
+                    <div class="journal-form">
+                        <h3>Mental Health Support</h3>
+                        <p>University students often face significant stress and mental health challenges. Our Mood Journal helps them:</p>
+                        <ul>
+                            <li>Track emotional patterns over time</li>
+                            <li>Identify triggers for stress and anxiety</li>
+                            <li>Develop self-awareness and reflection habits</li>
+                            <li>Access AI-powered insights about their mental state</li>
+                        </ul>
+                    </div>
+                    <div class="journal-chart">
+                        <h3>Academic Support</h3>
+                        <p>The Study Buddy feature assists with learning by:</p>
+                        <ul>
+                            <li>Transforming notes into interactive study materials</li>
+                            <li>Using active recall for better information retention</li>
+                            <li>Making studying more engaging and efficient</li>
+                            <li>Reducing study stress through better preparation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindfulBalance</h3>
+                    <p>AI-powered mental wellness tools for students and everyone else who wants to improve their mental health.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('mood-journal')">Mood Journal</a></li>
+                        <li><a onclick="showPage('study-buddy')">Study Buddy</a></li>
+                        <li><a onclick="showPage('about')">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Mental Health Tips</a></li>
+                        <li><a href="#">Study Techniques</a></li>
+                        <li><a href="#">Wellness Resources</a></li>
+                        <li><a href="#">Crisis Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> support@mindfulbalance.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Wellness St, Mindful City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MindfulBalance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
